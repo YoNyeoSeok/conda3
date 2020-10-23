@@ -1,6 +1,5 @@
 # NVIDIA_CUDA
-ARG CUDA
-FROM nvidia/cuda:$CUDA-cudnn7-devel-ubuntu16.04
+FROM nvidia/cuda:9.0-cudnn7-devel-ubuntu16.04
 
 # Miniconda3
 ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
