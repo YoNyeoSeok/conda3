@@ -1,6 +1,6 @@
 NAME=$USER
 WORKDIR=$HOME
-CUDA=$(/usr/local/cuda/bin/nvcc --version | tail -1 | cut -d ',' -f2 | cut -d ' ' -f3)
+CUDA=11.2.2
 
 options=$(getopt -o n:w:c: -l name:,workdir:,cuda: -- "$@")
 [ $? -eq 0 ] || { 
@@ -31,7 +31,7 @@ docker run -it -u $USER -w $WORKDIR -e "TERM=xterm-256color" \
 	--pid host \
 	-v=/home/$USER/data:/home/$USER/data:ro \
 	-v=/home/$USER/research:/home/$USER/research \
-	conda3:$USER
+	yonyeoseok/conda3:local
 
 case $? in
 	125) docker start $NAME; docker attach $NAME;;
