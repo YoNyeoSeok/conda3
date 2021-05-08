@@ -11,7 +11,7 @@ docker run --name tmp $NAME /bin/bash -c "
 docker commit tmp $NAME
 docker rm tmp
 
-docker run --name tmp -u $USER $NAME /bin/bash -c "
+docker run --name tmp $NAME /bin/bash -c "
 	runuser -l $USER -c '/opt/conda/bin/conda init'"
 docker commit tmp $NAME
 docker rm tmp
