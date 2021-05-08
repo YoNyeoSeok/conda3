@@ -1,9 +1,9 @@
 #!/bin/bash
-NAME=conda3
-CUDA=$(/usr/local/cuda/bin/nvcc --version | tail -1 | cut -d ',' -f2 | cut -d ' ' -f3)
+NAME=yonyeoseok/conda3:local
+CUDA=11.2.2
 
-docker pull yonyeoseok/conda3:cuda$CUDA-cudnn7-devel-ubuntu16.04
-docker tag yonyeoseok/conda3:cuda$CUDA-cudnn7-devel-ubuntu16.04 $NAME
+docker pull yonyeoseok/conda3:cuda$CUDA-cudnn8-devel-ubuntu18.04
+docker tag yonyeoseok/conda3:cuda$CUDA-cudnn8-devel-ubuntu18.04 $NAME
 
 docker run --name tmp $NAME /bin/bash -c "
 	useradd -m -u $UID -G sudo,conda $NAME && \
