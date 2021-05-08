@@ -6,13 +6,13 @@ docker pull yonyeoseok/conda3:cuda$CUDA-cudnn8-devel-ubuntu18.04
 docker tag yonyeoseok/conda3:cuda$CUDA-cudnn8-devel-ubuntu18.04 $NAME
 
 docker run --name tmp $NAME /bin/bash -c "
-	useradd -m -u $UID -G sudo,conda $NAME && \
-	echo '$NAME:passwd' | chpasswd"
+	useradd -m -u $UID -G sudo,conda $USER && \
+	echo '$USER:passwd' | chpasswd"
 docker commit tmp $NAME
 docker rm tmp
 
-docker run --name tmp -u $NAME $NAME /bin/bash -c "
-	runuser -l $NAME -c '/opt/conda/bin/conda init'"
+docker run --name tmp -u $USER $NAME /bin/bash -c "
+	runuser -l $USER -c '/opt/conda/bin/conda init'"
 docker commit tmp $NAME
 docker rm tmp
 
